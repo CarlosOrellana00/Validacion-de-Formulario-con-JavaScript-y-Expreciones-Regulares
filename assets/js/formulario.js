@@ -10,8 +10,43 @@ const expresiones = {
 }
 
 
-const validarFormulario = () => {
+const validarFormulario = (e) => {
+  switch(e.target.name){
+    case "usuario":
+      if(expresiones.usuario.test(e.target.value)){
+        document.getElementById('grupo__usuario').classList.remove('formulario__grupo-incorrecto');
+        document.getElementById('grupo__usuario').classList.add('formulario__grupo-correcto');
+        document.querySelector('#grupo__usuario i').classList.add('fa-check-circle');
+        document.querySelector('#grupo__usuario i').classList.remove('fa-times-circle');
+      }else{
+        document.getElementById('grupo__usuario').classList.add('formulario__grupo-incorrecto');
+        document.getElementById('grupo__usuario').classList.remove('formulario__grupo-correcto');
+        document.querySelector('#grupo__usuario i').classList.add('fa-times-circle');
+        document.querySelector('#grupo__usuario i').classList.remove('fa-check-circle');
+        document.querySelector('#grupo__usuario .formulario__input-error').classList.add('formulario__input-error-activo');
+      }
+    break;
 
+    case "nombre":
+
+    break;
+
+    case "password":
+
+    break;
+
+    case "password2":
+
+    break;
+
+    case "correo":
+
+    break;
+
+    case "telefono":
+
+    break;
+  }
 }
 
 inputs.forEach((input) =>{
