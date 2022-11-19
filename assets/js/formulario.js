@@ -13,39 +13,46 @@ const expresiones = {
 const validarFormulario = (e) => {
   switch(e.target.name){
     case "usuario":
-      if(expresiones.usuario.test(e.target.value)){
-        document.getElementById('grupo__usuario').classList.remove('formulario__grupo-incorrecto');
-        document.getElementById('grupo__usuario').classList.add('formulario__grupo-correcto');
-        document.querySelector('#grupo__usuario i').classList.add('fa-check-circle');
-        document.querySelector('#grupo__usuario i').classList.remove('fa-times-circle');
-      }else{
-        document.getElementById('grupo__usuario').classList.add('formulario__grupo-incorrecto');
-        document.getElementById('grupo__usuario').classList.remove('formulario__grupo-correcto');
-        document.querySelector('#grupo__usuario i').classList.add('fa-times-circle');
-        document.querySelector('#grupo__usuario i').classList.remove('fa-check-circle');
-        document.querySelector('#grupo__usuario .formulario__input-error').classList.add('formulario__input-error-activo');
-      }
+      validarCampo(expresiones.usuario, e.target, 'usuario');
     break;
 
     case "nombre":
-
+      validarCampo(expresiones.nombre, e.target, 'nombre');
     break;
 
     case "password":
-
+      validarCampo(expresiones.password, e.target, 'password');
     break;
 
     case "password2":
-
+      validarCampo(expresiones.password, e.target, 'password');
     break;
 
     case "correo":
-
+      validarCampo(expresiones.correo, e.target, 'correo');
     break;
 
     case "telefono":
-
+      validarCampo(expresiones.telefono, e.target, 'telefono');
     break;
+  }
+}
+
+//exprecion, input, campo
+const validarCampo = (expresion, input,campo) =>{
+  if(expresion.test(input.value)){
+    document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+    document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+    document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+    document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+    document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+
+  }else{
+    document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+    document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+    document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+    document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+    document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
   }
 }
 
